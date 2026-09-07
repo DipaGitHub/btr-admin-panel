@@ -1,0 +1,139 @@
+// Start Button 1
+.btn-1 {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  color: $text-color5;
+  padding: 17px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: center;
+  background: $text-color5;
+  vertical-align: middle;
+  border-radius: 4px;
+  z-index: 1;
+  transition-duration: 0.3s;
+  transition: 0.3s ease-out;
+  transform: perspective(1px) translateZ(0);
+  transition-property: color;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: $text-color2;
+    transform-origin: 49%;
+    transition: 0.3s ease-out;
+    z-index: -1;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    transition-property: transform;
+  }
+  &:hover {
+    color: $text-color2;
+    &::before {
+      background: $text-color2;
+      transform: scaleX(0);
+    }
+  }
+}
+// End Button 1
+
+// Start Button 2
+.btn-2 {  
+  display: inline-block;
+  color: $text-color3;
+  padding: 17px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 125%;
+  text-align: center;
+  background: $text-color4;
+  border-radius: 4px;
+  transition: 0.3s ease-out;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  overflow: hidden;
+  span {
+    margin-left: 7px;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: $text-color1;
+    transition: 0.4s ease-out;
+    z-index: -1;
+    width: 0%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+  }
+  &:hover {
+    color: $text-color5;
+    &::before {
+      width: 100%;
+      opacity: 1;
+      visibility: visible;
+    }
+    svg {
+      path {
+        fill: $text-color5;
+      }
+    }
+  }
+}
+// End Button 2
+
+// Start Button 3
+.btn-3 {  
+  display: inline-block;
+  color: $text-color1;
+  padding: 17px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 125%;
+  text-align: center;
+  background: $text-color6;
+  border-radius: 4px;
+  transition: 0.3s ease-out;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  overflow: hidden;
+  span {
+    margin-left: 7px;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+    background: $text-color8;
+    transition: 0.4s ease-out;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden; 
+  }
+  &:hover {
+    color: $text-color1;
+    &::before { 
+      height: 100%;
+      opacity: 1;
+      visibility: visible;
+    }
+    svg {
+      path {
+        fill: $text-color5;
+      }
+    }
+  }
+}
+// End Button 3

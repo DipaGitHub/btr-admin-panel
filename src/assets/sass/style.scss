@@ -1,0 +1,58 @@
+/*=============== Scss Indexing ===============
+01.variables
+02.mixin
+03.reset
+04.typography
+05.spacing
+06.theme-class
+07.animations
+08.header
+09.preloader
+10.buttons
+11.footer
+12.breadcrumb
+13.sidebar
+14.mobile-menu
+15.team-member
+16.faq
+17.index-1
+18.index-2
+19.index-3
+20.about-inner
+21.blog-details-inner
+22.theme-class-inner
+23.project-details
+24.team-details
+25.errro
+=============== base css ===============*/
+@import 'base/variables';
+@import 'base/mixin';
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/spacing';
+
+/******************************* theme css **********************************/
+@import 'theme/theme-class';
+@import 'theme/animations';
+
+/******************************** components *******************************/
+@import 'components/header';
+@import 'components/preloader';
+@import 'components/buttons';
+@import 'components/footer';
+@import 'components/breadcrumb';
+@import 'components/sidebar';
+@import 'components/mobile-menu';
+@import 'components/team-member';
+@import 'components/faq';
+
+/****************************** page styles ******************************/
+@import 'pages/index-1';
+@import 'pages/index-2';
+@import 'pages/index-3';
+@import 'pages/about-inner';
+@import 'pages/blog-details-inner';
+@import 'pages/theme-class-inner';
+@import 'pages/project-details';
+@import 'pages/team-details';
+@import 'pages/errro';

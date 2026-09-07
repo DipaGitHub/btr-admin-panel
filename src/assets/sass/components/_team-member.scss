@@ -1,0 +1,215 @@
+.team-inner {
+  overflow: hidden;
+  border-radius: 4px;
+  @media (max-width: 1200px) {
+    margin-bottom: 30px;
+  }
+  &.team-inner-about-page {
+    @media (max-width: 991px) {
+      img {
+        margin: auto;
+      }
+      &.team-inner-about-page-1,
+      &.team-inner-about-page-2 {
+        margin-bottom: 30px;
+      }
+    }
+    @media (max-width: 767px) {
+      &.team-inner-about-page-3 {
+        margin-bottom: 30px;
+      }
+    }
+    .team-social-media {
+      ul {
+        li {
+          a {
+            &:hover {
+              i {
+                color: $text-color2;
+              }
+            }
+          }
+        }
+      }
+    }
+    .team-name-position {
+      h6 {
+        a{
+          margin-top: 40px;
+          font-style: normal;
+          font-weight: 700;
+          color: $text-color1;
+          font-family: $heading-font;
+          margin-bottom: 0;
+          transition-timing-function: linear;
+          transition-duration: 0.3s;
+          display: block;
+        }
+        &:hover{
+          a{
+            color: $text-color2;
+          }
+        }
+      }
+      span {
+        color: $text-color2;
+      }
+    }
+  }
+  .team-thumb {
+    position: relative;
+    overflow: hidden;
+    max-height: 375px;
+    img {
+      transition: all .3s ease-out;
+      @media (max-width: 767px) {
+        width: 100%;
+      }
+    }
+    &::before { 
+      content: '';
+      width: 50%;
+      height: 50%;
+      background: #1954ed3b;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: all .3s ease-out;
+      opacity: 0;
+    }
+    .team-social-media {
+      position: absolute;
+      top: 90%;
+      left: 50%;
+      transform: translate(-50%, -90%);
+      width: 100%;
+      z-index: 3;
+      ul {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        li {
+          a {
+            background: $text-color1;
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            font-size: 17px;
+            transition: 0.3s ease-out;
+            border-radius: 4px;
+            @media (max-width: 767px) { 
+              width: 35px;
+              height: 35px;
+              line-height: 35px;
+              font-size: 12px;
+            }
+            &:hover {
+              background: $text-color4;
+              color: $text-color3;
+            }
+          }
+          &:nth-child(1) a,
+          &:nth-child(2) a,
+          &:nth-child(3) a,
+          &:nth-child(4) a,
+          &:nth-child(5) a {
+              position: relative;
+              top: 100px;
+          }
+          &:nth-child(1) a {
+            transition: all .4s ease-in-out;
+          }
+          &:nth-child(2) a {
+            transition: all .5s ease-in-out;
+          }
+          &:nth-child(3) a {
+            transition: all .6s ease-in-out;
+          }
+          &:nth-child(4) a {
+            transition: all .7s ease-in-out;
+          }
+          &:nth-child(5) a {
+            transition: all .8s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+  &:hover {
+    .team-thumb {
+      &::before {
+        width: 90%;
+        height: 90%;
+        opacity: 1;
+        z-index: 2;
+      }
+      img {
+        transform: scale(1.02);
+        z-index: 1;
+      }
+      .team-social-media {
+        ul {
+          li {
+            a {
+              top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .team-name-position {
+    text-align: center;
+    background: $text-color4;
+    padding: 25px 10px;
+    h6 {
+      a{
+        font-style: normal;
+        font-weight: 700;
+        color: $text-color1;
+        font-family: $heading-font;
+        margin-bottom: 0;
+        transition-timing-function: linear;
+        transition-duration: 0.3s;
+        display: block;
+      }
+      &:hover{
+        a{
+          color: $text-color3;
+        }
+      }
+    }
+    span {
+      color: $text-color13;
+      font-family: $body-font;
+      font-style: normal;
+      font-weight: 400;
+      margin-top: 11px;
+      display: block;
+    }
+  }
+}
+//  team about page 
+.team-area-about-inner {
+  .team-inner {
+    .team-thumb::before {
+      background: #ccff0030;
+    }
+    .team-name-position {
+      background: $text-color2;
+      h6 a,
+      span {
+        color: $text-color5;
+      }
+    }
+    .team-thumb .team-social-media ul li a {
+      color: $text-color5;
+      &:hover {
+        background: $text-color2;
+      }
+    }
+  }
+}

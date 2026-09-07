@@ -1,0 +1,120 @@
+// Start Heading Font
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+// End Heading Font
+
+// Start Body Font
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+// End Body Font
+
+// Start Font Sizing Class
+.font-size-1-18{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $text-color1;
+    font-family: $body-font;
+}
+.font-size-1-20{
+    color: $text-color1;
+    font-family: $body-font;
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+.font-size-1-70{
+    color: $text-color1;
+    font-family: $heading-font;
+    font-size: 70px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%;
+    @media (max-width: 768px) {
+        font-size: 50px;
+    }
+    @media (max-width: 425px) {
+        font-size: 30px;
+    }
+}
+.font-size-1-60{
+    color: $text-color1;
+    font-family: $heading-font;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%;
+}
+.font-size-1-16{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    font-family: $body-font;
+    color: $text-color5;
+}
+.font-size-1-24{
+    font-size: 24px;
+}
+.font-size-1-45{
+    font-size: 45px;
+    @media (max-width: 1024px) {
+        font-size: 35px;
+        line-height: 1.2;
+    }
+    @media (max-width: 524px) {
+        font-size: 24px;
+    }
+}
+.font-size-1-40{
+    font-size: 40px;
+    @media (max-width: 524px) {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+}
+.font-size-1-25{
+    font-size: 25px;
+}
+.font-size-1-26{
+    font-size: 26px;
+    @media (max-width: 424px) {
+        font-size: 20px;
+        line-height: 1.2;
+    }
+}
+.font-size-1-30{
+    font-size: 30px;
+    @media (max-width: 1024px) {
+        font-size: 24px;
+        line-height: 1.2;
+    }
+    @media (max-width: 424px) {
+        font-size: 20px;
+        line-height: 1.2;
+    }
+}
+.font-size-1-15{
+    font-size: 15px;
+}
+.font-size-1-35{
+    font-size: 35px;
+    @media (max-width: 1024px) {
+        font-size: 24px;
+        line-height: 1.2;
+    }
+}
+.font-size-1-22{
+    font-size: 22px;
+}
+.font-size-1-48{
+    font-size: 48px;
+}
+.font-size-1-50{
+    font-size: 50px;
+}
+.font-size-1-22{
+    font-size: 22px;
+}
+.font-size-1-14{
+    font-size: 14px;
+}
+// End Font Sizing Class

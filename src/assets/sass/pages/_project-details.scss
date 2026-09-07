@@ -1,0 +1,234 @@
+// Start Project Details
+.project-details-area {
+  position: relative;
+  padding-top: 130px;
+  padding-bottom: 130px;
+  padding-right: 20px;
+  padding-left: 20px;
+  .project-details-area-shep-1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .project-details-area-shep-2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .project-details-area-shep-3 {
+    position: absolute;
+    right: 0;
+    top: 45%;
+  }
+  @media (max-width: 991px) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .project-details-wrapper {
+    .project-details-banner {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 45px;
+      @media (max-width: 575px) {
+        display: block;
+        max-width: max-content;
+      }
+      .project-details-banner-inner-1,
+      .project-details-banner-inner-2 {
+        overflow: hidden;
+        border-radius: 5px;
+        &.project-details-banner-inner-1 {
+          @media (max-width: 575px) {
+            margin-bottom: 20px;
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    h3 {
+      color: $text-color1;
+      font-family: $heading-font;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-bottom: 40px;
+    }
+    .project-details-info {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(204, 255, 0, 0.15);
+      flex-wrap: wrap;
+      .project-details-info-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        @media (max-width: 375px) {
+          flex-direction: column;
+          align-items: start;
+        }
+        .project-details-info-name {
+          color: $text-color2;
+          font-family: $heading-font;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+        .project-details-main-work {
+          color: $text-color1;
+          font-family: $body-font;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+      }
+    }
+    p {
+      color: $text-color1;
+      font-family: $body-font;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      margin-top: 24px;
+    }
+    .project-details-result {
+      margin-top: 74px;
+      h4 {
+        color: $text-color1;
+        font-family: $heading-font;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 32px;
+      }
+      p {
+        color: $text-color1;
+        font-family: $body-font;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px;
+      }
+      .project-details-social-media {
+        margin-top: 80px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid rgba(204, 255, 0, 0.15);
+        .project-share {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          @media (max-width: 815px) {
+            display: block;
+          }
+          .project-share-tilte {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+            h5 {
+              color: $text-color2;
+              font-family: $heading-font;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 34px;
+            }
+            @media (max-width: 525px) {
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 20px;
+              margin-bottom: 40px;
+              font-size: 18px;
+            }
+          }
+          .project-details-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            @media (max-width: 815px) {
+              margin-top: 20px;
+            }
+            a {
+              padding: 6px 16px;
+              background-color: $text-color1;
+              border-radius: 4px;
+              color: $text-color5;
+              transition: all .3s ease-out;
+              font-size: 15px;
+              line-height: 1.5;
+              &:hover {
+                background-color: $text-color2;
+                color: $text-color5;
+              }
+            }
+          }
+        }
+      }
+      .project-details-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 22px;
+        span {
+          color: $text-color1;
+          font-family: $body-font;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 26px;
+          display: block;
+        }
+        .project-details-next {
+          text-align: right;
+          a {
+            display: inline-block;
+            span {    
+              display: flex;
+              align-items: center;
+              justify-content: end;
+              &:hover {
+                color: $text-color2;
+                svg path {
+                  fill: $text-color2;
+                }
+              }
+              svg {
+                margin-left: 8px;
+                width: 18px;
+              }
+            }
+          }
+          p {
+            margin-top: 11px;
+          }
+        }
+        .project-details-prev {
+          @media (max-width: 660px) {
+            margin-bottom: 15px;
+          }
+          a {
+            display: inline-block;
+            span {
+              display: flex;
+              align-items: center;
+              &:hover {
+                color: $text-color2;
+                svg path {
+                  fill: $text-color2;
+                }
+              }
+              svg {
+                margin-right: 8px;
+                width: 18px;
+              }
+            } 
+          }
+          p {
+            margin-top: 11px;
+          }
+        }
+      }
+    }
+  }
+}
+// End Project Details

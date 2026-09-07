@@ -1,0 +1,1681 @@
+// Start Hero Area 3
+.hero-area {
+  position: relative;
+  padding-top: 115px;
+  padding-right: 20px;
+  padding-left: 20px;
+  @media (max-width: 991px) {
+    padding-top: 70px;
+  }
+  .hero-title {
+    @media (max-width: 1199px) {
+      h2 {
+        font-size: 45px;
+      }
+    }
+    @media (max-width: 450px) {
+      h2 {
+        font-size: 35px;
+      }
+    }
+    @media (max-width: 580px) {
+      h2 {
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+  .hero-sub-title {
+    @media (max-width: 991px) {
+      margin-top: 25px;
+    }
+    p {
+      font-weight: 400;
+      letter-spacing: 0.54px;
+      margin-bottom: 30px;
+    }
+  }
+  .hero-img-banner {
+    padding-top: 105px;
+    .hero-banner-img-inner {
+      overflow: hidden;
+    }
+  }
+}
+// End Hero Area 3
+
+// Start Offer Area Home 3
+.offer-area-home-3 {
+  padding-top: 130px;
+  padding-bottom: 130px;
+  position: relative;
+  @media (max-width: 991px) {
+    padding-top: 70px;
+  }
+  &.project-grid-area {
+    .project-grid-area-1-shep-1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .project-grid-area-1-shep-2 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    .project-grid-area-1-shep-3 {
+      position: absolute;
+      right: 0;
+      top: 50%;
+    }
+
+    .project-grid-btn {
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        li {
+          background: $text-color5;
+          border-radius: 4px;
+          color: $text-color1;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          cursor: pointer;
+          transition: 0.5s ease;
+          padding: 10px 20px;
+          cursor: pointer;          
+          &:hover {
+            background: $text-color5;
+            color: $text-color1;
+          }
+          &.is-active {
+            background: $text-color2;
+            color: $text-color5;
+          }
+        }
+      }
+    }
+    .offer-wrapper {
+      .offer-inner {
+        .offer-name {
+          span {
+            i {
+              color: $text-color1;
+            }
+          }
+        }
+        &:hover {
+          .offer-name {
+            span {
+              i {
+                color: $text-color5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .offer-area-1-shep-1 {
+    position: absolute;
+    top: 71%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+  @media (max-width: 767px) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .offer-wrapper {
+    padding-top: 73px;
+    .offer-inner {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 15px;
+      img {
+        border-radius: 3px;
+      }
+      .offer-name {
+        position: absolute;
+        bottom: 25px;
+        border-radius: 2px;
+        background: rgba(16, 16, 16, 0.9);
+        padding: 25px 23px;
+        left: 25px;
+        right: 25px;
+        h5 {
+          a{
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            font-family: $heading-font;
+            color: $text-color1;
+            transition-timing-function: linear;
+            transition-duration: 0.3s;
+            display: block;
+          }
+          &:hover{
+            a{
+              color: $text-color6;
+            }
+          }
+        }
+        span {
+          width: 70px;
+          height: 70px;
+          background: $text-color8;
+          line-height: 70px;
+          display: block;
+          text-align: center;
+          border-radius: 50%;
+          position: absolute;
+          top: -38px;
+          right: 26px;
+          transition-timing-function: linear;
+          transition-duration: 0.3s;
+        }
+      }
+      &:hover {
+        .offer-name {
+          span {
+            background: $text-color6;
+          }
+        }
+      }
+    }
+  }
+  &.project-p {
+    @media (max-width: 1200px) {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    @media (max-width: 768px) {
+      .project-grid-btn.mt-80 {
+        margin-top: 50px;
+      }
+    }
+    .title .sub-title.sub-title-home-2 p {
+      color: $text-color2;
+    }
+    .offer-inner {
+      .offer-name {
+        span {
+          width: 60px;
+          height: 60px;
+          line-height: 60px;
+          background: $text-color5;
+        }
+        h5 {
+          a:hover {
+            color: $text-color2;
+          }
+        }
+      }
+      &:hover {
+        .offer-name span {
+          background: $text-color2;
+        }
+      }
+    }
+  }
+}
+// End Offer Area Home 3
+
+// Start Marque Area Home 3
+.marque-area-home-3 {
+  position: relative;
+  background: linear-gradient(180deg, $text-color6 10%, $text-color6 80%);
+  &.marque-area-home-1 {
+    background: linear-gradient(180deg, #CF0 10%, #849A2E 80%);
+  }
+  img {
+    position: relative;
+    z-index: 1;
+    margin: auto;
+    max-width: 940px;
+    @media (max-width: 768px) {
+      max-width: 740px;
+    }
+    @media (max-width: 625px) {
+      max-width: 640px;
+    }
+    @media (max-width: 525px) {
+      max-width: 450px;
+    }
+    @media (max-width: 425px) {
+      max-width: 350px;
+    }
+  }
+  .marque-1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: absolute;
+    top: 37%;
+    width: 100%;
+    &:hover {
+      span {
+        animation-play-state: paused;
+      }
+    }
+    @media (max-width: 575px) {
+      top: 16%;
+    }
+    &.marque-2 {
+      top: 60%;
+      z-index: 2;
+      @media (max-width: 575px) {
+        top: 40%;
+      }
+      &:hover {
+        span {
+          animation-play-state: paused;
+        }
+      }
+      span {
+        animation: marquee1 24s linear infinite;
+      }
+    }
+    span {
+      text-transform: uppercase;
+      will-change: transform;
+      transform: translateX(0);
+      white-space: nowrap;
+      animation: marquee 24s linear infinite;
+      color: $text-color3;
+      font-family: $body-font;
+      font-size: 153.6px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 153.6px;
+      @media (max-width: 991px) {
+        font-size: 100.6px;
+      }
+      @media (max-width: 575px) {
+        font-size: 60px;
+      }
+      @media (max-width: 380px) {
+        font-size: 40px;
+      }
+    }
+  }
+}
+// End Marque Area Home 3
+
+// Start Services Area Home 3
+.services-area-home-3 {
+  position: relative;
+  padding-top: 130px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 100px;
+  &.services-area {
+    .services-page-services-area-shep-1 {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .services-name {
+      &:hover {
+        .services-info {
+          a {
+            background-color: $text-color2;
+            svg {
+              path {
+                fill: $text-color5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .service-area-bg-shep-home-3 {
+    position: absolute;
+    top: 260px;
+    left: 0;
+  }
+  @media (max-width: 991px) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  h4 {
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -0.8px;
+    color: $text-color1;
+    font-family: $heading-font;
+    margin-bottom: 10px;
+    @media (max-width: 400px) {
+      font-size: 34px;
+    }
+  }
+  p {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    font-family: $body-font;
+    color: $text-color1;
+    @media (max-width: 1046px) {
+      br {
+        display: none;
+      }
+    }
+  }
+  .services-name {
+    margin-bottom: 50px;
+    cursor: pointer;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:hover {
+      h4 {
+        color: $text-color6;
+      }
+      .services-info {
+        a svg {
+          rotate: 177deg;
+        }
+      }
+    }
+    .services-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 35px;
+      border-bottom: 1px solid rgba(216, 208, 199, 0.2);
+      @media (max-width: 1055px) {
+        p {
+          width: 72%;
+        }
+      }
+      a svg {
+        transition: all .3s ease-out;
+        rotate: 135deg;
+      }
+    }
+  }
+  .services-banner {
+    @media (max-width: 991px) {
+      margin-top: 80px;
+    }
+    .title {
+      text-align: left;
+      @media (max-width: 991px) {
+        text-align: center;
+      }
+      @media (max-width: 1216px) {
+        h3 {
+          br {
+            display: none;
+          }
+        }
+      }
+      .main-title {
+        @media (max-width: 532px) {
+          h3 {
+            br {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .services-banner-inner {
+      margin-top: 58px;
+      display: flex;
+      gap: 20px;
+      @media (max-width: 991px) {
+        justify-content: center;
+      }
+      .services-img {
+        overflow: hidden;
+        &:first-child {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+.service-page {
+  .services-name:hover h4,
+  .title .sub-title.sub-title-home-3 p,
+  .title .sub-title.sub-title-home-2 p,
+  .marketing-list h5 {
+    color: $text-color2;
+  }
+  .marketing-list {
+    h5 {
+      color: $text-color2 !important;
+    }
+  }
+  .marketing-btn {
+    .btn-1 {
+      background: $text-color5;
+      &::before {
+        background: $text-color2;   
+      }
+      span {
+        svg path {
+          fill: $text-color5;
+        }
+      }
+      &:hover {
+        span {
+          svg path {
+            fill: $text-color2;
+          }
+        }
+      }
+    }
+  }
+  nav .nav-tabs button.active {
+    border-bottom: 1px dashed $text-color2 !important;
+  } 
+  .marketing-point {
+    svg path {
+      fill: $text-color2;
+    }
+  }
+
+}
+// End Services Area Home 3
+
+// Start Digital Product Area Home 3
+.digital-product-area-home-3 {
+  position: relative;
+  padding-top: 105px;
+  padding-bottom: 105px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &.about-page {
+    .digital-product-counter {
+      .digital-product-counter-1 {
+        .item-1 {
+          span {
+            color: $text-color2;
+          }
+          p {
+            color: $text-color2;
+          }
+        }
+      }
+    }
+  }
+  h2 {
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    font-family: $heading-font;
+    color: $text-color1;
+    margin-bottom: 25px;
+    @media (max-width: 1310px) {
+      br {
+        display: none;
+      }
+    }
+    @media (max-width: 991px) {
+      br {
+        display: unset;
+      }
+    }
+    @media (max-width: 681px) {
+      br {
+        display: none;
+      }
+      font-size: 22px;
+      line-height: 1.3;
+    }
+  }
+  p {
+    font-family: $body-font;
+    color: $text-color1;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+  }
+  a {
+    display: inline-block;
+    margin-top: 45px;
+  }
+  .digital-product-counter {
+    @media (max-width: 991px) {
+      margin-top: 40px;
+    }
+    span {
+      font-style: normal;
+      font-weight: 700;
+      line-height: 55px;
+      font-family: $heading-font;
+      color: $text-color1;
+    }
+    p {
+      font-style: normal;
+      font-weight: 600;
+      line-height: 26px;
+      font-family: $body-font;
+      color: $text-color1;
+    }
+    .digital-product-counter-1 {
+      display: flex;
+      gap: 116px;
+      @media (max-width: 565px) {
+        display: block;
+      }
+      .item-1 {
+        span {
+          color: $text-color6;
+        }
+        p {
+          color: $text-color6;
+        }
+      }
+      .item-2 {
+        margin-top: 15px;
+        @media (max-width: 565px) {
+          margin-top: 25px;
+        }
+      }
+    }
+    .digital-product-counter-2 {
+      display: flex;
+      margin-top: 82px;
+      gap: 125px;
+      @media (max-width: 565px) {
+        display: block;
+        margin-top: 25px;
+      }
+      .item-3 {
+        margin-left: -82px;
+        @media (max-width: 991px) {
+          margin-left: 0;
+        }
+        @media (max-width: 565px) {
+          margin-bottom: 25px;
+        }
+      }
+    }
+  }
+}
+// End Digital Product Area Home 3
+
+// Start Plan Area Home 3
+.plan-area-home-3 {
+  position: relative;
+  padding-top: 130px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 130px;
+  &.price-area {
+    .title .sub-title.sub-title-home-3 p {
+      color: $text-color2;
+    }
+    .price-area-bg-shep-1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .price-area-bg-shep-2 {
+      position: absolute;
+      bottom: -10%;
+      right: 0;
+    }
+    .plan-wrapper {
+      .price-inner {
+        svg {
+          path {
+            fill: $text-color2;
+          }
+        }
+        .price-popular-bach {
+          background: $text-color2;
+          color: $text-color8;
+        }
+        .price-btn {
+          .btn-3 {
+            background: $text-color2;
+            color: $text-color8;
+          }
+        }
+        &:hover {
+          h5,
+          h6,
+          span {
+            color: $text-color5;
+          }
+          background-color: $text-color2;
+          svg {
+            path {
+              fill: $text-color5;
+            }
+          }
+          .price {
+            border-color: #2c39442e;
+          }
+          .plan-item {
+            .plan-item-inner {
+              span {
+                color: $text-color5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 991px) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .price-area-bg-shep-1-home-3 {
+    position: absolute;
+    right: 0;
+    top: -240px;
+  }
+  .price-area-bg-shep-2-home-3 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  .title {
+    .main-title {
+      @media (max-width: 532px) {
+        h3 {
+          br {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  a {
+    display: block;
+    margin-top: 40px;
+  }
+  h6 {
+    color: $text-color1;
+    font-family: $heading-font;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110.5%;
+  }
+  h5 {
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110.5%;
+    color: $text-color1;
+    font-family: $heading-font;
+  }
+  span {
+    color: $text-color1;
+    font-family: $body-font;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 244%;
+  }
+  .price-popular-bach {
+    padding: 5px 13px;
+    background-color: $text-color6;
+    color: $text-color1;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 4px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    @media (max-width: 1080px) {
+      right: 3px;
+      top: 3px;
+    }
+    @media (max-width: 991px) {
+      right: 20px;
+      top: 20px;
+    }
+    @media (max-width: 400px) {
+      right: 3px;
+      top: 3px;
+    }
+  }
+  .plan-wrapper {
+    margin-top: 70px;
+    @media (max-width: 991px) {
+      margin-top: 40px;
+    }
+    .price-inner {
+      border-radius: 10px;
+      border: 1px solid rgba(255, 74, 59, 0.1);
+      background-color: $text-color8;
+      padding: 45px 38px;
+      transition: all 0.3s ease;
+      position: relative;
+      @media (max-width: 991px) {
+        margin-top: 30px;
+      }
+      &:hover {
+        background-color: $text-color6;
+        svg {
+          path {
+            fill: $text-color1;
+          }
+        }
+        .price-popular-bach {
+          background-color: $text-color1;
+          color: $text-color8;
+        }
+        .price-btn {
+          .btn-3 {
+            background: $text-color1;
+            color: $text-color8;
+            &:hover {
+              color: $text-color1;
+            }
+          }
+        }
+      }
+      .price {
+        display: flex;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(211, 211, 211, 0.2);
+        span {
+          display: block;
+          margin-top: 20px;
+        }
+      }
+      .plan-item {
+        padding-top: 30px;
+        .plan-item-inner {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+      }
+    }
+  }
+}
+// pricing single 
+.plan-area-home-3.single {
+    padding-top: 40px;
+    padding-bottom: 130px;
+    @media (max-width: 767px) {
+      padding-top: 20px;
+    }
+}
+// End Plan Area Home 3
+
+// Start Brand Logo Area Home 3
+.brand-logo-area-home-3 {
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 50px;
+  background-color: $text-color8;
+  .brand-logo-inner {
+    a {
+      transition: all .4s ease-out;    
+      cursor: unset;
+      &:hover {
+        opacity: .6;
+      }
+    }
+  }
+  &.services-area {
+    background-color: $text-color12;
+    a {
+      svg {
+        transition-timing-function: linear;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+  @media (max-width: 991px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+// End Brand Logo Area Home 3
+
+// Start Best Services Area Home 3
+.best-services-area-home-3 {
+  position: relative;
+  padding-top: 130px;
+  padding-bottom: 130px;
+  padding-right: 20px;
+  padding-left: 20px;
+  @media (max-width: 991px) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .title {
+    text-align: left;
+    @media (max-width: 991px) {
+      text-align: center;
+    }
+    p {
+      color: $text-color1;
+    }
+    h3 {
+      span {
+        color: $text-color6;
+        position: unset;
+      }
+      @media (max-width: 998px) {
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+  .best-services-banner { 
+    overflow: hidden;
+    max-width: 480px;
+    @media (max-width: 991px) {
+      img {
+        margin: auto;
+      }
+    }
+  }
+  .best-services-inner {
+    margin-top: 70px;
+    .best-services-item {
+      display: flex;
+      align-items: start;
+      gap: 32px;
+      margin-bottom: 30px;
+      @media (max-width: 991px) {
+        justify-content: center;
+      }
+      @media (max-width: 452px) {
+        gap: 15px;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &:first-child {
+        span {
+          background-color: $text-color6;
+        }
+      }
+      h5 {
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        color: $text-color1;
+        font-family: $heading-font;
+      }
+      p {
+        font-family: $body-font;
+        color: $text-color1;
+        margin-top: 10px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 30px;
+        @media (max-width: 500px) {
+          br {
+            display: none;
+          }
+        }
+      }
+      span {
+        width: 56px;
+        height: 56px;
+        background-color: $text-color1;
+        display: block;
+        text-align: center;
+        border-radius: 50%;
+        line-height: 56px;
+      }
+    }
+  }
+}
+// End Best Services Area Home 3
+
+// Start Weekly Meet Home 3
+.weekly-meet-home-3 {
+  &.about-area-weekly-meet {
+    .weekly-meet-wrapper {
+      h1 {
+        -webkit-text-stroke: 1px $text-color2;
+        -webkit-text-fill-color: transparent;
+        font-family: $heading-font;
+        position: relative;
+        &::before {
+          overflow: hidden;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          color: $text-color2;
+          white-space: nowrap;
+          content: attr(data-hover);
+          transition: all 0.5s cubic-bezier(0.17, 0.67, 0.32, 0.87);
+          -webkit-text-fill-color: transparent;
+        }
+      }
+      &:hover {
+        h1 {
+          &::before {
+            width: 100%;
+            -webkit-text-fill-color: $text-color2;
+          }
+        }
+      }
+    }
+  }
+  .weekly-meet-wrapper {
+    position: relative;
+    .weekly-meet-banner {
+      video {
+        object-fit: cover;
+        height: 750px;
+        width: 100%;
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          background-color: rgba(0, 0, 0, 0.5);
+          width: 100%;
+          height: 100%;
+        }
+        @media (max-width: 768px) {
+          height: 550px;
+        }
+        @media (max-width: 525px) {
+          height: 350px;
+        }
+      }
+    }
+    .weekly-meet-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      h1 {
+        font-size: 100px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        font-family: $heading-font;
+        color: $text-color3;
+        width: 120%;
+        text-align: center;
+        @media (max-width: 1542px) {
+          font-size: 80px;
+        }
+        @media (max-width: 1221px) {
+          font-size: 60px;
+        }
+        @media (max-width: 950px) {
+          font-size: 45px;
+          width: 100%;
+        }
+        @media (max-width: 692px) {
+          font-size: 35px;
+        }
+        @media (max-width: 536px) {
+          font-size: 24px;
+        }
+      }
+      @media (max-width: 950px) {
+        width: 100%;
+        padding: 0 20px;
+      }
+    }
+  }
+}
+// End Weekly Meet Home 3
+
+// Start Contact Area Home 3
+.contact-area-home-3 {
+  position: relative;
+  padding-top: 130px;
+  padding-bottom: 130px;
+  padding-left: 20px;
+  padding-right: 20px;
+  &.contact-area {
+    .form-wrapper {
+      form {
+        .input-item {
+          input {
+            border-color: rgba(204, 255, 0, 0.15);
+            &:focus {
+              border-color: $text-color2;
+            }
+          }
+        }
+        textarea {
+          border-color: rgba(204, 255, 0, 0.15);
+          &:focus {
+            border-color: $text-color2;
+          }
+        }
+        input[type="submit"] {
+          background-color: $text-color2;
+          color: $text-color5;
+        }
+      }
+    }
+  }
+  @media (max-width: 991px) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .contact-area-bg-shep-1-home-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .contact-area-bg-shep-2-home-3 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  @media (max-width: 991px) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  h5 {
+    color: $text-color1;
+    font-family: $heading-font;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px;
+    @media (max-width: 575px) {
+      font-size: 20px;
+    }
+  }
+  p {
+    font-family: $body-font;
+    color: $text-color1;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px;
+  }
+  h4 {
+    color: $text-color1;
+    font-family: $heading-font;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px;
+    @media (max-width: 575px) {
+      font-size: 25px;
+    }
+    @media (max-width: 499px) {
+      text-align: center;
+    }
+  }
+  h2 {
+    font-style: normal;
+    font-weight: 500;
+    line-height: 34px;
+    font-family: $heading-font;
+    color: $text-color1;
+    margin-bottom: 35px;
+    @media (max-width: 499px) {
+      text-align: center;
+    }
+  }
+  span {
+    color: $text-color1;
+    font-family: $body-font;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 34px;
+    @media (max-width: 499px) {
+      display: block;
+      text-align: center;
+    }
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    @media (max-width: 499px) {
+      justify-content: center;
+    }
+    li {
+      i {
+        color: $text-color6;
+        font-size: 25px;
+      }
+    }
+  }
+  .contact-info-wrapper {
+    background-color: $text-color8;
+    padding: 65px 55px;
+    width: 530px;
+    border-radius: 4px;
+    @media (max-width: 1162px) {
+      width: 445px;
+    }
+    @media (max-width: 991px) {
+      width: 530px;
+      margin-right: auto;
+      margin-left: auto;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 767px) {
+      width: auto;
+    }
+    .contact-info-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      @media (max-width: 499px) {
+        display: block;
+        text-align: center;
+        .contact-icon {
+          span {
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
+          }
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .form-wrapper {
+    .title {
+      text-align: left;
+      @media (max-width: 991px) {
+        text-align: center;
+      }
+      @media (max-width: 1140px) {
+        h3 {
+          font-size: 40px;
+          @media (max-width: 768px) {
+            font-size: 32px;
+            line-height: 1.3;
+          }
+          @media (max-width: 525px) {
+            font-size: 22px;
+          }
+        }
+      }
+    }
+    form {
+      margin-top: 60px;
+      .input-item {
+        display: flex;
+        gap: 25px;
+        @media (max-width: 1199px) {
+          display: block;
+        }
+        @media (max-width: 991px) {
+          display: flex;
+        }
+        @media (max-width: 767px) {
+          display: block;
+        }
+        input {
+          padding: 15px 21px;
+          background-color: $text-color8;
+          border-radius: 3px;
+          border: 1px solid rgba(255, 74, 59, 0.2);
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 26px;
+          font-family: $body-font;
+          color: $text-color1;
+          width: 50%;
+          margin-bottom: 20px;
+          transition: 0.4s ease;
+          @media (max-width: 1199px) {
+            width: 100%;
+          }
+          @media (max-width: 991px) {
+            width: 50%;
+          }
+          @media (max-width: 767px) {
+            width: 100%;
+          }
+          &::placeholder {
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 26px;
+            font-family: $body-font;
+            color: $text-color9;
+          }
+          &:focus {
+            border-color: $text-color6;
+          }
+        }
+      }
+      textarea {
+        padding: 13px 21px;
+        background-color: $text-color8;
+        border-radius: 3px;
+        border: 1px solid rgba(255, 74, 59, 0.2);
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 26px;
+        font-family: $body-font;
+        color: $text-color1;
+        width: 100%;
+        height: 165px;
+        transition: 0.4s ease;
+        &::placeholder {
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 26px;
+          font-family: $body-font;
+          color: $text-color9;
+        }
+        &:focus {
+          border-color: $text-color6;
+        }
+      }
+      button {
+        margin-top: 15px;
+        border: none;
+      }
+    }
+  }
+  &.contact-p {
+    .title .sub-title.sub-title-home-3 p,
+    .contact-info-wrapper ul li i {
+      color: $text-color2;
+    }
+  }
+}
+// End Contact Area Home 3
+
+// Start Client Say Home 3
+.client-say-area-home-3 {
+  position: relative;
+  padding-top: 114px;
+  padding-bottom: 114px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: $text-color8;
+  &.client-say-area-home-1 {
+    background-color: $text-color12;
+    .client-work-name {
+      color: $text-color2;
+    }
+    .slider-client-say-home-3-btn {
+      &.slider-btn-1 {
+        .swiper-button-next,
+        .swiper-button-prev {
+          &:hover {
+            background-color: $text-color2;
+            svg {
+              path {
+                fill: $text-color5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .client-say-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  h3 {
+    text-align: center;
+    color: $text-color1;
+    font-family: $heading-font;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 60px;
+  }
+  p {
+    color: $text-color1;
+    font-family: $body-font;
+    text-align: center;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    @media (max-width: 1200px) {
+      width: 60%;
+      margin: auto;
+      br {
+        display: none;
+      }
+    }
+    @media (max-width: 1024px) {
+      width: 80%;
+      font-size: 24px;
+    }
+    @media (max-width: 524px) {
+      width: unset;
+      font-size: 18px;
+    }
+  }
+  h5 {
+    color: $text-color1;
+    font-family: $heading-font;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-top: 41px;
+  }
+  @media (max-width: 1024px) { 
+    font-size: 24px;
+  }
+  @media (max-width: 900px) {
+    .client-say-home-3 {
+      padding-bottom: 115px;
+    }
+  }
+  .client-work-name {
+    display: block;
+    color: $text-color6;
+    font-family: $body-font;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-top: 7px;
+  }
+  .slider-client-say-home-3-btn {
+    &.slider-btn-1 {
+      position: relative;
+      bottom: 180px;
+      @media (max-width: 1200px) {
+        bottom: 270px;
+      }
+      @media (max-width: 900px) {
+        bottom: -55px;
+        left: 90%;
+        transform: translateX(-50%);
+      }
+      @media (max-width: 700px) {
+        left: 86%;
+      }
+      @media (max-width: 596px) {
+        left: 84%;
+      }
+      @media (max-width: 485px) {
+        left: 78%;
+      }
+      @media (max-width: 400px) {
+        display: none;
+      }
+      .swiper-button-next,
+      .swiper-button-prev {
+        background-color: transparent;
+        border: 1px solid #252525;
+        &:hover {
+          background-color: $text-color6;
+          border: none;
+        }
+        svg {
+          width: 10px;
+        }
+        &.swiper-button-next {
+          @media (max-width: 900px) {
+            position: absolute;
+            left: 85px;
+          }
+        }
+      }
+    }
+  }
+}
+// End Client Say Home 3
+
+// Start Blog Area Home 3
+.blog-area-home-3 {
+  position: relative;
+  padding-top: 130px;
+  padding-bottom: 130px;
+  padding-right: 20px;
+  padding-left: 20px;
+  &.blog-area {
+    position: relative;
+    .blog-area-1-shep-1 {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .blog-area-1-shep-2 {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    .blog-area-wrapper {
+      .blog-inner {
+        &:first-child {
+          margin-bottom: 25px;
+        }
+        &:nth-child(2) {
+          margin-bottom: 25px;
+        }
+        &:nth-child(3) {
+          margin-bottom: 25px;
+        }
+        &:hover {
+          h5 {
+            color: $text-color2;
+          }
+        }
+        .blog-meta {
+          .blog-date,
+          .blog-comment {
+            svg {
+              path {
+                fill: $text-color2;
+              }
+            }
+          }
+        }
+        .blog-writer {
+          .blog-learn-more {
+            a {
+              svg {
+                path {
+                  fill: $text-color2;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .blog-area-1-shep-1-bg-home-3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .blog-area-1-shep-2-bg-home-3 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  @media (max-width: 991px) {
+    padding-top: 70px;
+    padding-bottom: 40px;
+  }
+  .blog-area-wrapper {
+    padding-top: 70px;
+    .blog-inner {
+      padding: 50px 35px;
+      background-color: $text-color8;
+      @media (max-width: 991px) {
+        margin-bottom: 30px;
+      }
+      a {
+        color: $text-color1;
+        font-family: $heading-font;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 38px;
+        transition-timing-function: linear;
+        transition-duration: 0.3s;
+        display: inline-block;
+        margin-bottom: 15px;
+        &:hover {
+          color: $text-color6;
+        }
+        @media (max-width: 1255px) {
+          br {
+            display: none;
+          }
+        }
+      }
+      .blog-meta {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        @media (max-width: 1056px) {
+          display: block;
+        }
+        @media (max-width: 991px) {
+          display: flex;
+          gap: 15px;
+        }
+        @media (max-width: 375px) {
+          flex-direction: column;
+          align-items: start;
+        }
+        .blog-date,
+        .blog-comment {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          span {
+            color: $text-color1;
+            font-family: $body-font;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 36.5px;
+          }
+          &.blog-comment {
+            @media (max-width: 1056px) {
+              margin-top: 10px;
+            }
+            @media (max-width: 991px) {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+      p {
+        color: $text-color1;
+        font-family: $body-font;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 32px;
+        margin-top: 17px;
+        padding-bottom: 36px;
+        border-bottom: 1px solid rgba(221, 221, 221, 0.1);
+        @media (max-width: 1255px) {
+          br {
+            display: none;
+          }
+        }
+      }
+      .blog-writer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 25px;
+        .blog-witer-pic {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          span {
+            color: $text-color1;
+            font-family: $body-font;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 32px;
+          }
+        }
+        @media (max-width: 475px) {            
+          flex-direction: column;
+          align-items: start;
+          justify-content: flex-start;
+          gap: 12px;          
+        }
+        .blog-learn-more {
+          a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 0;
+            span {
+              color: $text-color1;
+              font-family: $body-font;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 32px;
+              transition: all .3s ease-out;
+            }
+            svg {
+              opacity: 0;
+              visibility: hidden;
+              transition: all .3s ease-out;
+            }
+            &:hover {
+              span {
+                color: $text-color6;
+              }
+              svg {
+                transform: translateX(5px);
+                opacity: 1;
+                visibility: visible;
+                path {
+                  fill: $text-color6;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.b-page {
+    padding-top: 40px;
+    padding-bottom: 105px;
+    @media (max-width: 767px) {
+    padding-top: 20px;
+    padding-bottom: 75px;
+    }
+    .blog-inner {
+      a:hover {
+        color: $text-color2 !important;
+        span {
+          color: $text-color2 !important;
+        }
+        svg path {
+          fill: $text-color2 !important;
+        }
+      }
+    }
+  }
+}
+// End Blog Area Home 3

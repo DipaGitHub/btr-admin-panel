@@ -1,0 +1,183 @@
+// Start Site Bar
+.sitebar-wrapper {
+  @media (max-width: 991px) {
+    margin-top: 50px;
+  }
+  .sitebar-search-bar {
+    background-color: $text-color12;
+    border-radius: 4px;
+    padding: 22px 32px;
+    form {
+      display: flex;
+      align-items: center;
+      input {
+        padding: 14px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: transparent;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        width: 100%;
+        font-size: 16px;
+        font-family: $body-font;
+        color: $text-color1;
+        font-weight: 400;
+        transition: all .3s ease-out;
+        &:focus {
+          border-color: $text-color2;
+        }
+        &::placeholder {
+          color: $text-color2;
+        }
+      }      
+      button {
+        background-color: $text-color2;
+        padding: 14px 20px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border: none;
+      }
+    }
+  }
+  .sitebar-menu {
+    background-color: $text-color12;
+    border-radius: 4px;
+    padding: 40px 30px;
+    margin-top: 25px;
+    ul {
+      margin-top: 38px;
+      li {
+        padding-bottom: 22px;
+        padding-top: 22px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition-timing-function: linear;
+        transition-duration: 0.3s;
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 17px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 26px;
+          color: $text-color1;
+          font-family: $body-font;
+          transition-timing-function: linear;
+          transition-duration: 0.3s;
+        }
+        &:hover {
+          border-bottom: 1px solid $text-color2;
+          a {
+            color: $text-color2;
+          }
+          i {
+            color: $text-color2;
+          }
+        }
+      }
+    }
+  }
+  .sitebar-comment {
+    background-color: $text-color12;
+    border-radius: 4px;
+    padding: 33px 29px;
+    margin-top: 30px;
+    .sitebar-comment-warpeer {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 50px;
+      @media (max-width: 575px) {
+        display: block;
+      }
+      .sitebar-comment-pic {
+        overflow: hidden;
+      }
+      .sitebar-meta {
+        @media (max-width: 575px) {
+          margin-top: 20px;
+        }
+        .sitebar-meta-inner {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+          margin-bottom: 17px;
+          span {
+            color: $text-color1;
+            font-family: $body-font;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+            svg {
+              margin-right: 2px;
+            }
+          }
+        }
+        h6 a {
+          color: $text-color1;
+          &:hover {
+            color: $text-color2;
+          }
+        }
+      }
+    }
+  }
+  .sitebar-banner {
+    overflow: hidden;
+    margin-top: 30px;
+  }
+  .sitebar-tag {
+    background-color: $text-color12;
+    border-radius: 4px;
+    padding: 30px;
+    margin-top: 30px;
+    .sitebar-tag-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 50px;
+      a {
+        padding: 6px 16px;
+        border-radius: 4px;
+        color: $text-color5;
+        font-family: $body-font;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+        display: block;
+        background-color: $text-color1;
+        transition-timing-function: linear;
+        transition-duration: 0.3s;
+        &:hover {
+          background-color: $text-color2;
+          color: $text-color5;
+        }
+      }
+    }
+  }
+}
+// End Site Bar
+
+// Start Sitebar Title
+.sitebar-title-1 {
+  color: $text-color2;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
+  font-family: $heading-font;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 58px;
+    height: 2px;
+    background-color: $text-color2;
+    border-radius: 4px;
+    bottom: -10px;
+    left: 0;
+  }
+}
+// End Sitebar Title

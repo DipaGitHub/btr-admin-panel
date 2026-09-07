@@ -1,0 +1,207 @@
+.team-area-about-inner {
+  position: relative;
+  padding-top: 130px;
+  padding-bottom: 130px;
+  padding-right: 20px;
+  padding-left: 20px;
+  .about-page-team-area-shep-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  @media (max-width: 991px) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .about-page-team {
+    margin-top: 70px;
+    .team-inner .team-thumb {
+      max-height: 280px;
+    }
+  }
+}
+
+.team-area-about-inner.single {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 100px;
+  padding-right: 20px;
+  padding-left: 20px;
+  .about-page-team-area-shep-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  @media (max-width: 991px) {
+    padding-top: 20px;
+    padding-bottom: 75px;
+  }
+  .about-page-team {
+    margin-top: 70px;
+    .team-inner .team-thumb {
+      max-height: 280px;
+    }
+  }
+}
+
+// Start About Area
+.about-area {
+  position: relative;
+  padding-top: 130px;
+  padding-bottom: 130px;
+  padding-right: 20px;
+  padding-left: 20px;
+  @media (max-width: 991px) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  p {
+    color: $text-color1;
+    font-family: $body-font;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    @media (max-width: 1165px) {
+      br {
+        display: none;
+      }
+    }
+    @media (max-width: 991px) {
+      text-align: center;
+      br {
+        display: block;
+      }
+    }
+    @media (max-width: 625px) {
+      br {
+        display: none;
+      }
+    }
+  }
+  h6 {
+    color: $text-color1;
+    font-family: $heading-font;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: -0.6px;
+  }
+  .about-img {
+    overflow: hidden;
+    border-radius: 4px;
+    @media (max-width: 991px) {
+      margin-bottom: 40px;
+      img {
+        margin: auto;
+      }
+    }
+  }
+  .about-info {
+    margin-left: 33px;
+    @media (max-width: 991px) {
+      margin-left: 0;
+    }
+    .title {
+      text-align: left;
+      margin-bottom: 28px;
+      @media (max-width: 991px) {
+        text-align: center;
+      }
+      @media (max-width: 1220px) {
+        h3 {
+          br {
+            display: none;
+          }
+        }
+      }
+      @media (max-width: 991px) {
+        h3 {
+          br {
+            display: block;
+          }
+        }
+      }
+      @media (max-width: 1165px) {
+        font-size: 40px;
+      }
+      @media (max-width: 625px) {
+        h3 {
+          br {
+            display: none;
+          }
+        }
+      }
+      @media (max-width: 1165px) {
+        .main-title {
+          font-size: 22px;
+          line-height: 1.5;
+        }
+      }
+    }
+    .about-item {
+      display: flex;
+      align-items: center;
+      margin-top: 40px;
+      gap: 67px;
+      @media (max-width: 991px) {
+        justify-content: center;
+        span {
+          display: block;
+          text-align: center;
+        }
+      }
+      @media (max-width: 656px) {
+        display: block;
+        .about-item-inner-1 {
+          margin-bottom: 20px;
+        }
+      }
+
+      h6 {
+        margin-top: 22px;
+        @media (max-width: 991px) {
+          text-align: center;
+        }
+      }
+      p {
+        margin-top: 12px;
+        @media (max-width: 1165px) {
+          br {
+            display: none;
+          }
+        }
+        @media (max-width: 991px) {
+          br {
+            display: block;
+          }
+        }
+      }
+    }
+    .about-avatar {
+      margin-top: 62px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      @media (max-width: 991px) {
+        justify-content: center;
+      }
+      @media (max-width: 500px) {
+        display: block;
+        p {
+          text-align: center;
+          margin-top: 10px;
+        }
+        img {
+          margin: auto;
+        }
+      }
+      p {
+        font-weight: 500;
+      }
+      img {
+        max-width: 200px;
+      }
+    }
+  }
+}
+// End About Area

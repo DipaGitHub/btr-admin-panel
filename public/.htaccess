@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /adminpanel/
+  
+  # If an existing asset or directory is requested, serve it
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  
+  # Otherwise, rewrite all requests to index.html within the adminpanel directory
+  RewriteRule ^ index.html [L]
+</IfModule>
