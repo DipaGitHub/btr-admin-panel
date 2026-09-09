@@ -284,8 +284,8 @@ const LogoCarousel = () => {
             <div className="space-y-2">
               <Label>Logo File (PNG/SVG preferred)</Label>
               {formData.existingImageUrl && !formData.image && (
-                <div className="mb-2 p-2 border rounded w-fit">
-                  <img src={`${SERVER_URL}` + (formData.existingImageUrl)} className="h-10 grayscale" />
+                <div className="mb-2 p-2 border rounded w-fit bg-muted/40 flex items-center justify-center">
+                  <img src={`${SERVER_URL}` + (formData.existingImageUrl)} className="h-10 object-contain max-w-[120px]" alt="Logo preview" />
                 </div>
               )}
               <Input
