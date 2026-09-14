@@ -18,6 +18,7 @@ import LogoCarousel from "./pages/LogoCarousel";
 import LatestUpdates from "./pages/LatestUpdates";
 import ChatConfig from "./pages/ChatConfig";
 import EmailConfig from "./pages/EmailConfig";
+import AIConversations from "./pages/AIConversations";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/logocarousel" element={<LogoCarousel />} />
           <Route path="/news" element={<LatestUpdates />} />
           <Route path="/chat-config" element={<ChatConfig />} />
+          <Route path="/ai-conversations" element={<AIConversations />} />
           <Route path="/email-config" element={<EmailConfig />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

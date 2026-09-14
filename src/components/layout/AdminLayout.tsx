@@ -139,8 +139,16 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
                 className="flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-muted"
                 activeClassName="bg-muted font-medium"
               >
+                <span className="text-muted-foreground">⚙️</span>
+                AI Chat Settings
+              </NavLink>
+              <NavLink
+                to="/ai-conversations"
+                className="flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors hover:bg-muted"
+                activeClassName="bg-muted font-medium"
+              >
                 <span className="text-muted-foreground">🤖</span>
-                Chat Assistant
+                AI Conversations
               </NavLink>
               <NavLink
                 to="/email-config"

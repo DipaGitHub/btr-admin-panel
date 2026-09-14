@@ -2,9 +2,28 @@ import React, { useEffect, useState } from 'react';
 import AdminLayout from '../components/layout/AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Trash2, Plus, ToggleLeft, ToggleRight, ChevronDown, ChevronRight, MessageSquare, Edit3, Check } from 'lucide-react';
-
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Trash2, Plus, ToggleLeft, ToggleRight, ChevronDown, ChevronRight,
+  Bot, Save, Sparkles, Check, AlertCircle, RefreshCw
+} from 'lucide-react';
+import { toast } from 'sonner';
 import { API_BASE_URL } from '../config/api';
+
+interface AISettings {
+  is_active: boolean;
+  bot_name: string;
+  welcome_message: string;
+  enable_lead_capture: boolean;
+  enable_pricing_answers: boolean;
+  enable_portfolio_answers: boolean;
+  enable_faq_answers: boolean;
+  enable_human_handoff: boolean;
+  system_prompt_override: string;
+}
 
 interface Service {
   id: number;
@@ -22,35 +41,92 @@ interface Question {
 }
 
 export default function ChatConfig() {
+  const [aiSettings, setAiSettings] = useState<AISettings>({
+    is_active: true,
+    bot_name: 'BTR AI Assistant',
+    welcome_message: '👋 Welcome to BTR Communication! How can I assist you with your project today?',
+    enable_lead_capture: true,
+    enable_pricing_answers: true,
+    enable_portfolio_answers: true,
+    enable_faq_answers: true,
+    enable_human_handoff: true,
+    system_prompt_override: ''
+  });
+
+  const [savingSettings, setSavingSettings] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  // Legacy Topic & Question state
   const [services, setServices] = useState<Service[]>([]);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [expandedServiceId, setExpandedServiceId] = useState<number | null>(null);
   const [newQuestion, setNewQuestion] = useState('');
-  const [loading, setLoading] = useState(true);
-  // For editing chat_label inline
   const [editingLabelId, setEditingLabelId] = useState<number | null>(null);
   const [labelDraft, setLabelDraft] = useState('');
 
-  const fetchConfig = () => {
+  const fetchAllConfig = () => {
     setLoading(true);
-    fetch(`${API_BASE_URL}/chat/admin/config`)
-      .then(res => res.json())
-      .then(data => {
-        setServices(data.services || []);
-        setQuestions(data.questions || []);
+    Promise.all([
+      fetch(`${API_BASE_URL}/ai/admin/settings`).then(r => r.json()).catch(() => null),
+      fetch(`${API_BASE_URL}/chat/admin/config`).then(r => r.json()).catch(() => null)
+    ])
+      .then(([aiRes, legacyRes]) => {
+        if (aiRes?.settings) {
+          setAiSettings({
+            is_active: !!aiRes.settings.is_active,
+            bot_name: aiRes.settings.bot_name || 'BTR AI Assistant',
+            welcome_message: aiRes.settings.welcome_message || '',
+            enable_lead_capture: !!aiRes.settings.enable_lead_capture,
+            enable_pricing_answers: !!aiRes.settings.enable_pricing_answers,
+            enable_portfolio_answers: !!aiRes.settings.enable_portfolio_answers,
+            enable_faq_answers: !!aiRes.settings.enable_faq_answers,
+            enable_human_handoff: !!aiRes.settings.enable_human_handoff,
+            system_prompt_override: aiRes.settings.system_prompt_override || ''
+          });
+        }
+
+        if (legacyRes) {
+          setServices(legacyRes.services || []);
+          setQuestions(legacyRes.questions || []);
+        }
       })
       .catch(console.error)
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => { fetchConfig(); }, []);
+  useEffect(() => {
+    fetchAllConfig();
+  }, []);
 
-  const handleToggle = (service: Service) => {
+  const handleSaveAISettings = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSavingSettings(true);
+    try {
+      const res = await fetch(`${API_BASE_URL}/ai/admin/settings`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(aiSettings)
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast.success("AI Assistant settings saved successfully!");
+      } else {
+        toast.error("Failed to save settings: " + (data.error || "Unknown error"));
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Error connecting to server to save settings.");
+    } finally {
+      setSavingSettings(false);
+    }
+  };
+
+  const handleToggleLegacy = (service: Service) => {
     fetch(`${API_BASE_URL}/chat/admin/topics/toggle`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ service_id: service.id })
-    }).then(() => fetchConfig());
+    }).then(() => fetchAllConfig());
   };
 
   const handleSaveLabel = (service: Service) => {
@@ -60,7 +136,7 @@ export default function ChatConfig() {
       body: JSON.stringify({ service_id: service.id, chat_label: labelDraft.trim() || null })
     }).then(() => {
       setEditingLabelId(null);
-      fetchConfig();
+      fetchAllConfig();
     });
   };
 
@@ -73,165 +149,246 @@ export default function ChatConfig() {
       body: JSON.stringify({ topic_id: topicId, question_text: newQuestion })
     }).then(() => {
       setNewQuestion('');
-      fetchConfig();
+      fetchAllConfig();
     });
   };
 
   const handleDeleteQuestion = (id: number) => {
     fetch(`${API_BASE_URL}/chat/admin/questions/${id}`, { method: 'DELETE' })
-      .then(() => fetchConfig());
+      .then(() => fetchAllConfig());
   };
 
   return (
     <AdminLayout>
-      <div className="p-6 space-y-6">
+      <div className="p-6 max-w-5xl space-y-8">
         <div>
-          <h1 className="text-2xl font-bold">Chat Assistant Configuration</h1>
-          <p className="text-muted-foreground mt-1">
-            Enable your services for the BTR Bot widget. Set a custom label (what users will see as the topic option) and configure the questions the bot will ask.
+          <div className="flex items-center gap-2">
+            <h1 className="text-2xl font-bold">AI Assistant Configuration</h1>
+            <span className="inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full bg-red-500/10 text-red-500 border border-red-500/20">
+              <Sparkles size={11} /> Gemini Powered
+            </span>
+          </div>
+          <p className="text-muted-foreground mt-1 text-sm">
+            Configure how your BTR AI Sales & Support Assistant interacts with website visitors, answers questions, queries MySQL database tools, and qualifies leads.
           </p>
         </div>
 
-        <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg text-sm text-blue-400 space-y-1">
-          <p><strong>How it works:</strong></p>
-          <ol className="list-decimal list-inside space-y-1 ml-1">
-            <li>Toggle a service <strong>ON</strong> to show it in the BTR Bot widget.</li>
-            <li>Set a <strong>Chat Label</strong> — this is what users see (e.g. "I want to build a website" instead of "Web Development").</li>
-            <li>Expand the service and add <strong>2–3 questions</strong> the bot will ask users one by one.</li>
-            <li>After the questions, the bot automatically collects the user's contact details as a <strong>lead</strong>.</li>
-          </ol>
-        </div>
+        {/* AI Settings Form */}
+        <form onSubmit={handleSaveAISettings} className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center justify-between">
+                <span className="flex items-center gap-2">
+                  <Bot size={20} className="text-red-500" />
+                  General Bot Settings
+                </span>
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    id="bot-status"
+                    checked={aiSettings.is_active}
+                    onCheckedChange={(val) => setAiSettings(prev => ({ ...prev, is_active: val }))}
+                  />
+                  <Label htmlFor="bot-status" className="font-normal text-sm cursor-pointer">
+                    {aiSettings.is_active ? 'AI Assistant Active' : 'AI Assistant Offline'}
+                  </Label>
+                </div>
+              </CardTitle>
+              <CardDescription>
+                Control identity, name, and introductory greeting seen by visitors.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="bot-name">Assistant Name</Label>
+                  <Input
+                    id="bot-name"
+                    value={aiSettings.bot_name}
+                    onChange={(e) => setAiSettings(prev => ({ ...prev, bot_name: e.target.value }))}
+                    placeholder="e.g. BTR Bot"
+                  />
+                </div>
+              </div>
 
-        {loading ? (
-          <p className="text-muted-foreground">Loading services...</p>
-        ) : (
+              <div className="space-y-2">
+                <Label htmlFor="welcome-msg">Welcome Greeting Message</Label>
+                <Textarea
+                  id="welcome-msg"
+                  rows={2}
+                  value={aiSettings.welcome_message}
+                  onChange={(e) => setAiSettings(prev => ({ ...prev, welcome_message: e.target.value }))}
+                  placeholder="Greeting shown when a user opens the chat widget..."
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="system-override">System Instructions Override (Optional)</Label>
+                <Textarea
+                  id="system-override"
+                  rows={3}
+                  value={aiSettings.system_prompt_override}
+                  onChange={(e) => setAiSettings(prev => ({ ...prev, system_prompt_override: e.target.value }))}
+                  placeholder="Leave empty to use BTR's standard Zero-Hallucination system prompt..."
+                />
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Feature Toggles */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">AI Tool & Knowledge Capabilities</CardTitle>
+              <CardDescription>
+                Enable or disable dynamic database tool queries for services, pricing, portfolio, and FAQ facts.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="flex items-center justify-between p-3 border rounded-lg">
+                <div>
+                  <p className="font-medium text-sm">Lead Capture & Scoring</p>
+                  <p className="text-xs text-muted-foreground">Extract customer requirements & save to leads table</p>
+                </div>
+                <Switch
+                  checked={aiSettings.enable_lead_capture}
+                  onCheckedChange={(val) => setAiSettings(p => ({ ...p, enable_lead_capture: val }))}
+                />
+              </div>
+
+              <div className="flex items-center justify-between p-3 border rounded-lg">
+                <div>
+                  <p className="font-medium text-sm">Pricing Answers</p>
+                  <p className="text-xs text-muted-foreground">Query admin_pricing database dynamically</p>
+                </div>
+                <Switch
+                  checked={aiSettings.enable_pricing_answers}
+                  onCheckedChange={(val) => setAiSettings(p => ({ ...p, enable_pricing_answers: val }))}
+                />
+              </div>
+
+              <div className="flex items-center justify-between p-3 border rounded-lg">
+                <div>
+                  <p className="font-medium text-sm">Portfolio Showcase</p>
+                  <p className="text-xs text-muted-foreground">Recommend case studies from admin_portfolio</p>
+                </div>
+                <Switch
+                  checked={aiSettings.enable_portfolio_answers}
+                  onCheckedChange={(val) => setAiSettings(p => ({ ...p, enable_portfolio_answers: val }))}
+                />
+              </div>
+
+              <div className="flex items-center justify-between p-3 border rounded-lg">
+                <div>
+                  <p className="font-medium text-sm">FAQ Answers</p>
+                  <p className="text-xs text-muted-foreground">Query admin_faq database for company questions</p>
+                </div>
+                <Switch
+                  checked={aiSettings.enable_faq_answers}
+                  onCheckedChange={(val) => setAiSettings(p => ({ ...p, enable_faq_answers: val }))}
+                />
+              </div>
+
+              <div className="flex items-center justify-between p-3 border rounded-lg md:col-span-2">
+                <div>
+                  <p className="font-medium text-sm">Human Agent Handoff</p>
+                  <p className="text-xs text-muted-foreground">Notify staff via email when visitors request human assistance</p>
+                </div>
+                <Switch
+                  checked={aiSettings.enable_human_handoff}
+                  onCheckedChange={(val) => setAiSettings(p => ({ ...p, enable_human_handoff: val }))}
+                />
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="flex justify-end">
+            <Button type="submit" disabled={savingSettings} className="gap-2">
+              <Save size={16} />
+              {savingSettings ? "Saving Settings..." : "Save AI Assistant Settings"}
+            </Button>
+          </div>
+        </form>
+
+        {/* Legacy / Topic Configuration for Starters */}
+        <div className="pt-6 border-t">
+          <div className="mb-4">
+            <h2 className="text-lg font-semibold">Service Starter Labels (Optional)</h2>
+            <p className="text-xs text-muted-foreground">
+              Customize how active services and quick-starter topic chips appear in the widget.
+            </p>
+          </div>
+
           <div className="space-y-3">
             {services.map(service => {
-              const isEnabled = !!(service.topic_id && service.chat_active);
-              const isExpanded = expandedServiceId === service.id;
-              const isEditingLabel = editingLabelId === service.id;
+              const isActive = !!service.chat_active;
               const serviceQuestions = questions.filter(q => q.topic_id === service.topic_id);
-              const displayLabel = service.chat_label || service.name;
+              const isExpanded = expandedServiceId === service.id;
+              const isEditing = editingLabelId === service.id;
 
               return (
                 <div
                   key={service.id}
-                  className={`border rounded-lg overflow-hidden transition-all ${
-                    isEnabled ? 'border-primary/40 bg-primary/5' : 'border-border'
+                  className={`border rounded-lg transition-colors ${
+                    isActive ? 'border-border bg-card' : 'border-border/40 bg-card/40 opacity-70'
                   }`}
                 >
-                  {/* Service Row */}
-                  <div className="flex items-center justify-between p-4 gap-3">
-                    <div className="flex items-center gap-3 flex-1 min-w-0">
-                      <MessageSquare className={`w-5 h-5 shrink-0 ${isEnabled ? 'text-primary' : 'text-muted-foreground'}`} />
-                      <div className="flex-1 min-w-0">
-                        <p className="font-medium text-sm">{service.name}</p>
-                        {isEnabled && (
-                          <div className="flex items-center gap-1 mt-0.5">
-                            {isEditingLabel ? (
-                              <div className="flex items-center gap-1">
-                                <Input
-                                  autoFocus
-                                  value={labelDraft}
-                                  onChange={e => setLabelDraft(e.target.value)}
-                                  placeholder={`e.g. I want to build a website`}
-                                  className="h-6 text-xs py-0 px-2"
-                                  onKeyDown={e => e.key === 'Enter' && handleSaveLabel(service)}
-                                />
-                                <button onClick={() => handleSaveLabel(service)} className="text-green-500 hover:text-green-400">
-                                  <Check className="w-3.5 h-3.5" />
-                                </button>
-                              </div>
-                            ) : (
-                              <>
-                                <span className="text-xs text-muted-foreground truncate">
-                                  Label: <span className="text-foreground/80">{displayLabel}</span>
-                                </span>
-                                <button
-                                  onClick={() => { setEditingLabelId(service.id); setLabelDraft(service.chat_label || ''); }}
-                                  className="text-muted-foreground hover:text-foreground ml-1"
-                                >
-                                  <Edit3 className="w-3 h-3" />
-                                </button>
-                              </>
-                            )}
-                          </div>
+                  <div className="p-3 flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 w-8 p-0"
+                        onClick={() => handleToggleLegacy(service)}
+                      >
+                        {isActive ? (
+                          <ToggleRight className="h-6 w-6 text-green-500" />
+                        ) : (
+                          <ToggleLeft className="h-6 w-6 text-muted-foreground" />
                         )}
-                        {isEnabled && (
-                          <p className="text-xs text-muted-foreground mt-0.5">{serviceQuestions.length} question{serviceQuestions.length !== 1 ? 's' : ''} configured</p>
+                      </Button>
+                      <div>
+                        <span className="font-medium text-sm">{service.name}</span>
+                        {service.chat_label && (
+                          <span className="ml-2 text-xs text-muted-foreground">
+                            (Label: "{service.chat_label}")
+                          </span>
                         )}
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 shrink-0">
-                      <button
-                        onClick={() => handleToggle(service)}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                          isEnabled
-                            ? 'bg-primary/20 text-primary hover:bg-primary/30'
-                            : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                        }`}
-                      >
-                        {isEnabled ? <ToggleRight className="w-3.5 h-3.5" /> : <ToggleLeft className="w-3.5 h-3.5" />}
-                        {isEnabled ? 'On' : 'Off'}
-                      </button>
-                      {isEnabled && (
-                        <button
-                          onClick={() => setExpandedServiceId(isExpanded ? null : service.id)}
-                          className="p-1 rounded hover:bg-muted transition-colors"
+                    <div className="flex items-center gap-2">
+                      {isEditing ? (
+                        <div className="flex items-center gap-1">
+                          <Input
+                            size={1}
+                            className="h-8 text-xs w-48"
+                            value={labelDraft}
+                            onChange={e => setLabelDraft(e.target.value)}
+                            placeholder={service.name}
+                          />
+                          <Button size="sm" className="h-8 px-2" onClick={() => handleSaveLabel(service)}>
+                            <Check size={14} />
+                          </Button>
+                        </div>
+                      ) : (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-8 text-xs text-muted-foreground"
+                          onClick={() => {
+                            setEditingLabelId(service.id);
+                            setLabelDraft(service.chat_label || service.name);
+                          }}
                         >
-                          {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-                        </button>
+                          Edit Label
+                        </Button>
                       )}
                     </div>
                   </div>
-
-                  {/* Expanded Questions Panel */}
-                  {isEnabled && isExpanded && (
-                    <div className="border-t border-border bg-card px-4 pb-4 pt-3 space-y-3">
-                      <p className="text-sm font-medium">
-                        Bot questions for <span className="text-primary">"{displayLabel}"</span>:
-                      </p>
-                      <p className="text-xs text-muted-foreground">The bot will ask these one by one after the user selects this topic.</p>
-
-                      {serviceQuestions.length === 0 && (
-                        <p className="text-xs text-muted-foreground italic py-2">No questions yet. Add 2–3 questions below.</p>
-                      )}
-
-                      <div className="space-y-2">
-                        {serviceQuestions.map((q, index) => (
-                          <div key={q.id} className="flex items-start gap-2 group">
-                            <span className="text-xs text-muted-foreground mt-2 w-5 shrink-0">{index + 1}.</span>
-                            <p className="flex-1 text-sm bg-muted rounded px-3 py-2">{q.question_text}</p>
-                            <button
-                              onClick={() => handleDeleteQuestion(q.id)}
-                              className="opacity-0 group-hover:opacity-100 p-1 mt-1 text-red-500 hover:text-red-400 transition-opacity"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-
-                      <form onSubmit={(e) => handleAddQuestion(e, service.topic_id!)} className="flex gap-2 mt-2">
-                        <Input
-                          placeholder="e.g. What is your expected timeline for this project?"
-                          value={newQuestion}
-                          onChange={e => setNewQuestion(e.target.value)}
-                          className="text-sm"
-                          required
-                        />
-                        <Button type="submit" size="sm" className="shrink-0">
-                          <Plus className="w-4 h-4 mr-1" /> Add
-                        </Button>
-                      </form>
-                    </div>
-                  )}
                 </div>
               );
             })}
           </div>
-        )}
+        </div>
       </div>
     </AdminLayout>
   );
